@@ -1,0 +1,21 @@
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dm=new ListNode(0);
+        ListNode c=dm;
+        int cy=0;
+        while(l1!=null || l2!=null || cy>0){
+            if(l1!=null){
+                cy += l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                cy += l2.val;
+                l2=l2.next;
+            }
+            c.next=new ListNode(cy%10);
+            cy/=10;
+            c=c.next;
+        }
+        return dm.next;
+    }
+}
